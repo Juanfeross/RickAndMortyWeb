@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --white: #f9f9f9;
+  --black: #36383F;
+  --grey: #85888C;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('./assets/fonts/font-medium/Poppins-Medium.ttf');
+}
