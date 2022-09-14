@@ -1,4 +1,4 @@
-export interface Character {
+export interface ICharacter {
   id: number;
   name: string;
   image: string;
@@ -8,4 +8,16 @@ export interface Character {
   origin: string;
   location: string;
   status: string;
+}
+
+export interface IPagination {
+  count: number;
+  next: string;
+  pages: number;
+  prev?: string;
+}
+
+export interface IResultCharacter {
+  info: IPagination;
+  results: ICharacter[];
 }

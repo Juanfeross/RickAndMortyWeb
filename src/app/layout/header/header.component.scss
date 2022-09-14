@@ -14,7 +14,7 @@ li {
   display: block;
   width: 5rem;
   margin-top: 1rem;
-  margin-right: 1rem;
+  margin-right: 3rem;
   margin-left: 2.5rem;
 }
 
@@ -41,8 +41,8 @@ li {
 
 /* Nav menu */
 .nav {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   background-color: var(--black);
   overflow: hidden;
@@ -71,6 +71,7 @@ li {
   cursor: pointer;
   float: right;
   padding: 33px 20px;
+  margin-right: 1rem;
 }
 
 
@@ -171,20 +172,12 @@ li {
 
 @media (min-width: 1024px) {
   .nav {
-      max-height: none;
+      max-height: 7rem;
       top: 0;
       position: relative;
       float: right;
       width: fit-content;
       background-color: transparent;
-  }
-
-  .search {
-    width: 36rem;
-    padding: .6rem;
-    border: none;
-    margin-top: 1.6rem;
-    font-size: 1.7rem;
   }
 
   .menu li {

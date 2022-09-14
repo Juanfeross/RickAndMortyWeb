@@ -1,1 +1,39 @@
+<div class="list">
+  <div class="characters" *ngFor="let character of characters">
+    <div [routerLink]="['characters-details', character.id]" class="cards">
+      <div class="image">
+        <a>
+          <img [src]="character.image" [alt]="character.name" class="perso">
+        </a>
+      </div>
+      <div class="header">
+        <h2>{{character.name}}</h2>
+        <h4 class="text-muted">{{character.gender}}</h4>
+        <small class="text-muted">{{character.status}}</small>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- <div class="row">
+  <div class="col" *ngFor="let character of characters">
+    <div class="card">
+      <div class="image">
+        <a [routerLink]="['characters-details', character.id]">
+          <img [src]="character.image" [alt]="character.name" class="card-img-top">
+        </a>
+      </div>
+      <div class="card-inner">
+        <div class="card-inner">
+          <div class="header">
+            <a [routerLink]="['characters-details', character.id]">
+              <h2>{{character.name}}</h2>
+            </a>
+            <h4 class="text-muted">{{character.gender}}</h4>
+            <small class="text-muted">{{character.created}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
