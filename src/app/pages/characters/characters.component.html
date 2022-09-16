@@ -1,3 +1,7 @@
+<div class="sidebar">
+  <input class="next" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(true)">
+  <input class="prev" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(false)">
+</div>
 <div class="list">
   <div class="characters" *ngFor="let character of characters">
     <div [routerLink]="['characters-details', character.id]" class="cards">
@@ -7,13 +11,17 @@
         </a>
       </div>
       <div class="header">
-        <h2>{{character.name}}</h2>
-        <h4 class="text-muted">{{character.gender}}</h4>
-        <small class="text-muted">{{character.status}}</small>
+        <h2>{{character.name | slice: 0:15}}</h2>
+        <h3 class="text-muted">{{character.gender}}</h3>
+        <h4 class="statusText statusText--{{character.status | lowercase}}">{{character.status}}</h4>
       </div>
+    </div>
+    <div class="life life--{{character.status | lowercase}}" >
     </div>
   </div>
 </div>
+
+<input class="pageText" id="si" type="number" placeholder="{{pageNum}}">
 
 
 <!-- <div class="row">

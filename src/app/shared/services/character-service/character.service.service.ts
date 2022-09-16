@@ -11,9 +11,8 @@ export class CharacterService {
 
 constructor(private http: HttpClient) {}
 
-  public getSearchCharacters():Observable <IResultCharacter> {
-    const path = environment.baseUrlAPI;
-    //return this.http.get<ICharacter[]>(path);
+  public getSearchCharacters(pageNum = 1):Observable <IResultCharacter> {
+    const path = environment.baseUrlAPI + '?page=' + pageNum;
     return this.http.get<IResultCharacter>(path);
   }
 

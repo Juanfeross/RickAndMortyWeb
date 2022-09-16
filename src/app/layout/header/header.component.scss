@@ -20,9 +20,7 @@ li {
 
 /* Header */
 .header {
-  background-color: var(--black);
-  box-shadow: 1px 1px 5px 0px var(--grey);
-  position: sticky;
+  background-color: #010411;
   top: 0;
   width: 100vw;
   height: 7rem;
@@ -48,6 +46,7 @@ li {
   overflow: hidden;
   text-align: center;
   top: 7rem;
+  z-index: +4;
 }
 
 .menu .a {
