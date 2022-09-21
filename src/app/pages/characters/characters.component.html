@@ -1,47 +1,68 @@
-<div class="sidebar">
-  <input class="next" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(true)">
-  <input class="prev" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(false)">
-</div>
 <div class="list">
   <div class="characters" *ngFor="let character of characters">
-    <div [routerLink]="['characters-details', character.id]" class="cards">
+    <div (click)="getDetails(character.id); getLocations(character.id)" class="cards">
       <div class="image">
         <a>
           <img [src]="character.image" [alt]="character.name" class="perso">
         </a>
       </div>
       <div class="header">
-        <h2>{{character.name | slice: 0:15}}</h2>
-        <h3 class="text-muted">{{character.gender}}</h3>
+        <h2>{{character.name | slice: 0:20}}</h2>
+        <h3 class="species">{{character.species}}</h3>
         <h4 class="statusText statusText--{{character.status | lowercase}}">{{character.status}}</h4>
       </div>
     </div>
     <div class="life life--{{character.status | lowercase}}" >
     </div>
+    <div class="sex sex--{{character.gender | lowercase}}" >
+    </div>
   </div>
 </div>
 
-<input class="pageText" id="si" type="number" placeholder="{{pageNum}}">
+<div class="sidebar">
+  <input class="prev" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(false)">
+  <input class="pageText" type="number" placeholder="{{pageNum}}" [(ngModel)]="pageNum" (keyup)="getSearchCharacters()">
+  <input class="next" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(true)">
+</div>
 
-
-<!-- <div class="row">
-  <div class="col" *ngFor="let character of characters">
-    <div class="card">
-      <div class="image">
-        <a [routerLink]="['characters-details', character.id]">
-          <img [src]="character.image" [alt]="character.name" class="card-img-top">
-        </a>
-      </div>
-      <div class="card-inner">
-        <div class="card-inner">
-          <div class="header">
-            <a [routerLink]="['characters-details', character.id]">
-              <h2>{{character.name}}</h2>
-            </a>
-            <h4 class="text-muted">{{character.gender}}</h4>
-            <small class="text-muted">{{character.created}}</small>
+<div class="details">
+  <div class="characterDetails">
+    <img [src]="charactersDetails.image" [alt]="charactersDetails.name" class="persoDetail">
+  </div>
+  <div class="info">
+    <h2 class="titleName">{{charactersDetails.name}}</h2>
+    <div class="menu">
+      <ul class="infoDetail">
+        <li class="gen">
+          <h2>Gender: {{charactersDetails.gender}}</h2>
+          <div class="sexDetail sexDetail--{{charactersDetails.gender | lowercase}}" >
           </div>
-        </div>
-      </div>
+        </li>
+        <li>
+          <h2>Species: {{charactersDetails.species}}</h2>
+        </li>
+        <li>
+          <h2>Origin: {{charactersDetails.origin.name}}</h2>
+        </li>
+        <li>
+          <h2 class="stat">Status: {{charactersDetails.status}}</h2>
+          <div class="lifeDetail lifeDetail--{{charactersDetails.status | lowercase}}" >
+          </div>
+        </li>
+        <li>
+          <h2 class="episode">Episodes: {{charactersDetails.episode.length}}</h2>
+        </li>
+        <li>
+          <h2>Created: {{charactersDetails.created | date}}</h2>
+        </li>
+        <li>
+          <h2>Last Location: {{charactersDetails.location.name}}</h2>
+        </li>
+      </ul>
     </div>
-  </div> -->
+  </div>
+  <div class="episodesInfo">
+  </div>
+</div>
+
+

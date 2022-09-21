@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    CharactersRoutingModule
+    CharactersRoutingModule,
+    FormsModule
   ],
   exports: [
     CharactersComponent

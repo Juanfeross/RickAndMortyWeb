@@ -5,9 +5,12 @@ export interface ICharacter {
   species: string;
   gender: string;
   created: string;
-  origin: string;
-  location: string;
+  origin: ILocation;
+  location: ILocation;
   status: string;
+  type: string;
+  url: string;
+  episode: [];
 }
 
 export interface IPagination {
@@ -20,4 +23,9 @@ export interface IPagination {
 export interface IResultCharacter {
   info: IPagination;
   results: ICharacter[];
+}
+
+export interface ILocation {
+  name: string;
+  url: string;
 }

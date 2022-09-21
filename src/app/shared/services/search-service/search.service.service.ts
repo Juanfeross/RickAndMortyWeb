@@ -11,12 +11,10 @@ constructor() { }
 
 public search(data: string): void {
   this.onSearch.emit(data);
-
 }
 
 get OnSearch() {
   return this.onSearch;
-
 }
 
 }

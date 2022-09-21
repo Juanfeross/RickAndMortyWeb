@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IResultCharacter } from '../../interfaces/character.interface';
+import { ICharacter, ILocation, IResultCharacter } from '../../interfaces/character.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +11,18 @@ export class CharacterService {
 
 constructor(private http: HttpClient) {}
 
-  public getSearchCharacters(pageNum = 1):Observable <IResultCharacter> {
-    const path = environment.baseUrlAPI + '?page=' + pageNum;
+  public getSearchCharacters(pageNum = 1, name: string=''):Observable <IResultCharacter> {
+    const path = environment.baseUrlAPI + '/character' + '?page=' + pageNum + '&name=' + name;
     return this.http.get<IResultCharacter>(path);
   }
 
-  // searchCharacters(query='', page = 1) {
-  //   const filter = `${environment.baseUrlAPI}/?name=${query}&page=${page}`;
-  //   return this.http.get<ICharacter[]>(filter);
-  // }
-  getDetails(id:number) {
-    //return this.http.get<ICharacter>(`${environment.baseUrlAPI}/${id}`)
+  public getDetails(id:number):Observable <ICharacter> {
+    return this.http.get<ICharacter>(environment.baseUrlAPI + '/character' + '/' + id)
+  }
+
+  public getLocations(id:number):Observable <ILocation> {
+    return this.http.get<ILocation>(environment.baseUrlAPI + '/location' + '/' + id)
   }
 }
+
+
