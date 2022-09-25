@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ICharacter, ILocation, IPagination } from 'src/app/shared/interfaces/character.interface';
+import { ICharacter, IEpisode, ILocation, IPagination } from 'src/app/shared/interfaces/character.interface';
 import { CharacterService } from 'src/app/shared/services/character-service/character.service.service';
 import { SearchService } from 'src/app/shared/services/search-service/search.service.service';
 
@@ -55,12 +55,12 @@ export class CharactersComponent implements OnInit {
       console.log(response);
       this.characters = response.results;
       this.pages = response.info;
-      this.getDetails(this.characters[0].id)
-      this.getLocations(this.characters[0].id);
+      this.getDetails(this.characters[0].id);
     })
   }
 
   public getDetails(id:number) {
+    this.selectedItem(id);
     this.characterService.getDetails(id)
     .subscribe(resp => {
       console.log(resp);
@@ -68,16 +68,19 @@ export class CharactersComponent implements OnInit {
     })
   }
 
-  public getLocations(id:number) {
-    this.characterService.getLocations(id)
-    .subscribe(answer => {
-      console.log(answer);
-      this.locationDetail = answer;
-    })
-  }
-
-  public getIndex() {
-    const indexArray = this.charactersDetails.episode.map((item, index) => index);
+  public items() {
+    const indexArray = this.charactersDetails.episode.map((item, index) => item);
     return indexArray;
   }
+
+  public selectedItem(id:number) {
+    this.characters.forEach(character => {
+      character.isSelected = false;
+      if (id === character.id) {
+        character.isSelected = true;
+      }
+    });
+  }
 }
+
+

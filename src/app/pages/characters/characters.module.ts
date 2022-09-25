@@ -5,6 +5,7 @@ import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PipesModule } from 'src/app/core/pipes/pipes.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     CharactersRoutingModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   exports: [
     CharactersComponent

@@ -19,10 +19,6 @@ constructor(private http: HttpClient) {}
   public getDetails(id:number):Observable <ICharacter> {
     return this.http.get<ICharacter>(environment.baseUrlAPI + '/character' + '/' + id)
   }
-
-  public getLocations(id:number):Observable <ILocation> {
-    return this.http.get<ILocation>(environment.baseUrlAPI + '/location' + '/' + id)
-  }
 }
 
 

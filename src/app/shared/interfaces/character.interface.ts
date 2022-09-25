@@ -11,6 +11,7 @@ export interface ICharacter {
   type: string;
   url: string;
   episode: [];
+  isSelected?: boolean;
 }
 
 export interface IPagination {
@@ -27,5 +28,12 @@ export interface IResultCharacter {
 
 export interface ILocation {
   name: string;
+  url: string;
+}
+
+export interface IEpisode {
+  name: string;
+  episode: string;
+  characters: string[];
   url: string;
 }

@@ -1,6 +1,6 @@
 <div class="list">
-  <div class="characters" *ngFor="let character of characters">
-    <div (click)="getDetails(character.id); getLocations(character.id)" class="cards">
+  <div class="characters" [ngClass]="{'character--selected':character.isSelected}" tabindex="0" *ngFor="let character of characters">
+    <div (click)="getDetails(character.id)" class="cards">
       <div class="image">
         <a>
           <img [src]="character.image" [alt]="character.name" class="perso">
@@ -8,7 +8,7 @@
       </div>
       <div class="header">
         <h2>{{character.name | slice: 0:20}}</h2>
-        <h3 class="species">{{character.species}}</h3>
+        <h3 class="species">{{character.species | slice: 0:12}}</h3>
         <h4 class="statusText statusText--{{character.status | lowercase}}">{{character.status}}</h4>
       </div>
     </div>
@@ -25,43 +25,49 @@
   <input class="next" type="image" src="./../../../assets/images/icons/angle-up.png" (click)="buttonClick(true)">
 </div>
 
-<div class="details">
-  <div class="characterDetails">
-    <img [src]="charactersDetails.image" [alt]="charactersDetails.name" class="persoDetail">
-  </div>
-  <div class="info">
-    <h2 class="titleName">{{charactersDetails.name}}</h2>
-    <div class="menu">
-      <ul class="infoDetail">
-        <li class="gen">
-          <h2>Gender: {{charactersDetails.gender}}</h2>
-          <div class="sexDetail sexDetail--{{charactersDetails.gender | lowercase}}" >
-          </div>
-        </li>
-        <li>
-          <h2>Species: {{charactersDetails.species}}</h2>
-        </li>
-        <li>
-          <h2>Origin: {{charactersDetails.origin.name}}</h2>
-        </li>
-        <li>
-          <h2 class="stat">Status: {{charactersDetails.status}}</h2>
-          <div class="lifeDetail lifeDetail--{{charactersDetails.status | lowercase}}" >
-          </div>
-        </li>
-        <li>
-          <h2 class="episode">Episodes: {{charactersDetails.episode.length}}</h2>
-        </li>
-        <li>
-          <h2>Created: {{charactersDetails.created | date}}</h2>
-        </li>
-        <li>
-          <h2>Last Location: {{charactersDetails.location.name}}</h2>
-        </li>
-      </ul>
+<div class="details" *ngIf="charactersDetails">
+  <div class="meme">
+    <div class="characterDetails">
+      <img [src]="charactersDetails.image" [alt]="charactersDetails.name" class="persoDetail">
     </div>
-  </div>
-  <div class="episodesInfo">
+    <div class="info">
+      <h2 class="titleName">{{charactersDetails.name}}</h2>
+      <div class="menu">
+        <ul class="infoDetail">
+          <li class="gen">
+            <h2>Gender: {{charactersDetails.gender}}</h2>
+            <div class="sexDetail sexDetail--{{charactersDetails.gender | lowercase}}" >
+            </div>
+          </li>
+          <li>
+            <h2>Species: {{charactersDetails.species}}</h2>
+          </li>
+          <li>
+            <h2>Origin: {{charactersDetails.origin.name}}</h2>
+          </li>
+          <li>
+            <h2 class="stat">Status: {{charactersDetails.status}}</h2>
+            <div class="lifeDetail lifeDetail--{{charactersDetails.status | lowercase}}" >
+            </div>
+          </li>
+          <li>
+            <h2 class="episode">All Episodes: {{charactersDetails.episode.length}}</h2>
+          </li>
+          <li>
+            <h2>Created: {{charactersDetails.created | date}}</h2>
+          </li>
+          <li>
+            <h2>Last Location: {{charactersDetails.location.name}}</h2>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="episodeMenu">
+      <h2 class="titleEpisode">Episode Appearances</h2>
+      <div class="episodesInfo">
+        <h2 class="episode" *ngFor="let item of charactersDetails.episode">{{item | episodes}}</h2>
+      </div>
+    </div>
   </div>
 </div>
 
