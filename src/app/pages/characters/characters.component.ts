@@ -52,7 +52,6 @@ export class CharactersComponent implements OnInit {
     }
     this.characterService.getSearchCharacters(this.pageNum, name)
     .subscribe(response => {
-      console.log(response);
       this.characters = response.results;
       this.pages = response.info;
       this.getDetails(this.characters[0].id);
@@ -63,7 +62,6 @@ export class CharactersComponent implements OnInit {
     this.selectedItem(id);
     this.characterService.getDetails(id)
     .subscribe(resp => {
-      console.log(resp);
       this.charactersDetails = resp;
     })
   }
